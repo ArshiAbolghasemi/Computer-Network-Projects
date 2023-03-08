@@ -79,6 +79,8 @@ HotelRoomUserInfo* HotelRoomEntity::getUserInfo(int _userId)
             return *it;
         }
     }
+
+    return nullptr;
 }
 
 UserEntity* HotelRoomEntity::getUser(int _userId)
