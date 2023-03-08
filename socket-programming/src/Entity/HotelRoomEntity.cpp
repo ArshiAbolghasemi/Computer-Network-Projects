@@ -83,12 +83,6 @@ HotelRoomUserInfo* HotelRoomEntity::getUserInfo(int _userId)
     return nullptr;
 }
 
-UserEntity* HotelRoomEntity::getUser(int _userId)
-{
-    HotelRoomUserInfo* userInfo = this->getUserInfo(_userId);
-    return UserEntity::getById(userInfo->userId);
-}
-
 HotelRoomEntity* HotelRoomEntity::addUser(HotelRoomUserInfo* userInfo)
 {
     this->usersInfo.push_back(userInfo);

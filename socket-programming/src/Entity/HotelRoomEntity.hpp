@@ -3,7 +3,7 @@
 
 #include "Entity.hpp"
 #include "UserEntity.hpp"
-#include "../lib/HotelRoomUsersInfo.hpp"
+#include "../lib/HotelRoomUserInfo.hpp"
 
 class HotelRoomEntity : public Entity
 {
