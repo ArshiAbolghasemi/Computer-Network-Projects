@@ -15,7 +15,7 @@ private:
 
     string password;
 
-    int wallet;
+    double wallet;
 
     string phoneNumber;
 
@@ -27,7 +27,7 @@ public:
         int _id,
         string _name,
         string _password,
-        int _wallet,
+        double _wallet,
         string _phoneNumber,
         string _address,
         bool _isAdmin
@@ -37,6 +37,8 @@ public:
 
     static string getTableName();
 
+    static UserEntity* getInstance(json jsonData);
+
     string getName();
 
     UserEntity* setName(string _name);
@@ -45,9 +47,9 @@ public:
 
     UserEntity* setPassword(string _password);
 
-    int getWallet();
+    double getWallet();
 
-    UserEntity* setWallet(int _wallet);
+    UserEntity* setWallet(double _wallet);
 
     string getPhoneNumber();
 

@@ -4,7 +4,7 @@ UserEntity::UserEntity(
     int _id,
     string _name,
     string _password,
-    int _wallet,
+    double _wallet,
     string _phoneNumber,
     string _address,
     bool _isAdmin
@@ -18,12 +18,25 @@ UserEntity::UserEntity(
 
 string UserEntity::getJsonFilePath()
 {
-    return "../../config/UsersInfo.json";
+    return "UsersInfo.json";
 }
 
 string UserEntity::getTableName()
 {
     return "users";
+}
+
+UserEntity* UserEntity::getInstance(json jsonData)
+{
+    return (new UserEntity(
+        jsonData.at("id"),
+        jsonData.at("name"),
+        jsonData.at("password"),
+        jsonData.value("wallet", 0),
+        jsonData.value("phoneNumber", ""),
+        jsonData.value("address", ""),
+        jsonData.at("isAdmin")
+    )); 
 }
 
 string UserEntity::getName()
@@ -48,12 +61,12 @@ UserEntity* UserEntity::setPassword(string _password)
     return this;
 }
 
-int UserEntity::getWallet()
+double UserEntity::getWallet()
 {
     return this->wallet;
 }
 
-UserEntity* UserEntity::setWallet(int _wallet)
+UserEntity* UserEntity::setWallet(double _wallet)
 {
     this->wallet = _wallet;
     return this;

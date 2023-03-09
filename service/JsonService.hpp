@@ -25,8 +25,7 @@ public:
     void writeToFile(json document, string filePath);
 
     template<typename T>
-    json getDocByKeyValue(json* docs, string key, T value);
-    
+    json getDocByKeyValue(json docs, string key, T value);
 };
 
 JsonService* JsonService::service = nullptr;

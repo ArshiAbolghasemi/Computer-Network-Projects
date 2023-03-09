@@ -24,11 +24,13 @@ void JsonService::writeToFile(json document, string filePath)
 }
 
 template<typename T>
-json JsonService::getDocByKeyValue(json* docs, string key, T value)
+json JsonService::getDocByKeyValue(json docs, string key, T value)
 {
-    for(auto it = docs->begin(); it != docs->end(); ++it){
-        if((*it)[key] == value){
-            return *it;
+    for(auto doc : docs){
+        if(doc[key] == value){
+            return doc;           
         }
     }
+
+    return json({});
 }

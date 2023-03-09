@@ -1,8 +1,12 @@
 #ifndef __DATETIME_HPP
 #define __DATETIME_HPP
+
 #include <string>
 #include <sstream>
 #include <vector>
+
+using namespace std;
+
 class DateTime
 {
 private:
@@ -11,13 +15,13 @@ private:
     int year;
 public:
 
-    const char DEFAULT_DELIMITER = '-';
+    static const char DEFAULT_DELIMITER = '-';
 
     DateTime(int _day, int _month, int _year);
-    DateTime();
-    static std::string dateToString(DateTime& d);
-    static DateTime* stringToDate(std::string s);
 
+    string toString();
+
+    static DateTime* toDate(string str);
 };
 
 #endif

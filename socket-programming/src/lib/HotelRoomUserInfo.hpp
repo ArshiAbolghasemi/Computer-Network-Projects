@@ -6,8 +6,8 @@
 struct HotelRoomUserInfo {
     int userId;
     int numOfBeds;
-    DateTime reserveDate;
-    DateTime checkoutDate;
+    DateTime* reserveDate;
+    DateTime* checkoutDate;
 };
 
 typedef struct HotelRoomUserInfo HotelRoomUserInfo;
