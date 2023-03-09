@@ -2,13 +2,15 @@
 
 using namespace std;
 
+JsonService::JsonService() {}
+
 JsonService* JsonService::getInstance()
 {
     if(service == nullptr){
-        service = new JsonService();
+        JsonService::service = new JsonService();
     }
 
-    return service;
+    return JsonService::service;
 }
 
 json JsonService::readFile(string filePath)

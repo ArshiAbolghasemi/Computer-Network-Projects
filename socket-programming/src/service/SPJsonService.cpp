@@ -1,17 +1,14 @@
 #include "SPJsonService.hpp"
 
+SPJsonService::SPJsonService() {}
+
 SPJsonService* SPJsonService::getInstance()
 {
-    if(service == nullptr){
-        service = new SPJsonService();
+    if(SPJsonService::service == nullptr){
+        SPJsonService::service = new SPJsonService();
     }
 
-    return service;
-}
-
-JsonService* SPJsonService::getJsonServiceInstance()
-{
-    return JsonService::getInstance();
+    return SPJsonService::service;
 }
 
 json SPJsonService::readfile(string filePath)
@@ -26,14 +23,14 @@ void SPJsonService::writeToFile(json document, string filePath)
 
 HotelRoomUserInfo* SPJsonService::getHotelRommUserInfoFormJson(json userInfo)
 {
-    HotelRoomUserInfo hotelRoomUserInfo {
-        userInfo["user_id"],
-        userInfo["numOfBeds"],
-        DateTime::toDate(userInfo["reserveDate"]),
-        DateTime::toDate(userInfo["checkoutDate"])
-    };
+    HotelRoomUserInfo *hotelRoomUserInfo = new HotelRoomUserInfo;
 
-    return &hotelRoomUserInfo;
+    hotelRoomUserInfo->userId = userInfo["user_id"];
+    hotelRoomUserInfo->numOfBeds = userInfo["numOfBeds"];
+    hotelRoomUserInfo->reserveDate = DateTime::toDate(userInfo["reserveDate"]);
+    hotelRoomUserInfo->checkoutDate = DateTime::toDate(userInfo["checkoutDate"]);
+
+    return hotelRoomUserInfo;
 }
 
 vector<HotelRoomUserInfo*> SPJsonService::getHotelRommAllUsersInfoFormJson(json usersInfo)

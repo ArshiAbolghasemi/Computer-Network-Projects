@@ -16,8 +16,6 @@ public:
 
     static SPJsonService* getInstance();
 
-    static JsonService* getJsonServiceInstance();
-
     SPJsonService(SPJsonService &service) = delete;
 
     void operator=(const SPJsonService &) = delete;
