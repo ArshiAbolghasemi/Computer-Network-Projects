@@ -29,19 +29,19 @@ HotelRoomUserInfo* SPJsonService::getHotelRommUserInfoFormJson(json userInfo)
     HotelRoomUserInfo hotelRoomUserInfo {
         userInfo["user_id"],
         userInfo["numOfBeds"],
-        nullptr,
-        nullptr
+        DateTime::toDate(userInfo["reserveDate"]),
+        DateTime::toDate(userInfo["checkoutDate"])
     };
 
     return &hotelRoomUserInfo;
 }
 
-vector<HotelRoomUserInfo*> SPJsonService::getHotelRommAllUsersInfoFormJson(json *usersInfo)
+vector<HotelRoomUserInfo*> SPJsonService::getHotelRommAllUsersInfoFormJson(json usersInfo)
 {
     vector<HotelRoomUserInfo*> allUsersInfo = {};
 
-    for(auto it = usersInfo->begin(); it != usersInfo->end(); ++it){
-        allUsersInfo.push_back(this->getHotelRommUserInfoFormJson(*it));
+    for(auto userInfo : usersInfo){
+        allUsersInfo.push_back(this->getHotelRommUserInfoFormJson(userInfo));
     }
 
     return allUsersInfo;

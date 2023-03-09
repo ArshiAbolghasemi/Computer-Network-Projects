@@ -28,7 +28,7 @@ public:
 
     HotelRoomUserInfo* getHotelRommUserInfoFormJson(json userInfo);
 
-    vector<HotelRoomUserInfo*> getHotelRommAllUsersInfoFormJson(json* usersInfo);
+    vector<HotelRoomUserInfo*> getHotelRommAllUsersInfoFormJson(json usersInfo);
 };
 
 SPJsonService* SPJsonService::service = nullptr;

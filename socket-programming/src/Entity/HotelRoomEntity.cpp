@@ -31,7 +31,7 @@ HotelRoomEntity* HotelRoomEntity::getInstance(json jsonData)
         jsonData.at("price"),
         jsonData.at("maxCapacity"),
         jsonData.at("capacity"),
-        {}
+        SPJsonService::getInstance()->getHotelRommAllUsersInfoFormJson(jsonData["users"])
     ));
 }
 

@@ -4,29 +4,33 @@ DateTime::DateTime(int _day, int _month, int _year) :
         day(_day),
         month(_month), 
         year(_year) {}
-DateTime::DateTime() {}
-std::string DateTime::dateToString(DateTime& d)
+
+string DateTime::toString()
 {
-        std::stringstream ss;
-        ss << d.day << "-" << d.month << "-" 
-            << d.year;
-        std::string result;
-        std::getline(ss, result);
-        return result;
+        stringstream ss;
+        ss << this->day << DEFAULT_DELIMITER << this->month << DEFAULT_DELIMITER << this->year;
+
+        string res;
+        getline(ss, res);
+
+        return res;
 }
-DateTime* DateTime::stringToDate(std::string s)
+
+DateTime* DateTime::toDate(string str)
 {
-        std::stringstream ss;
-        ss << s;
-        std::string temp;
-        std::vector<std::string> dateVec;
-        while(std::getline(ss, temp, '-'))
+        stringstream ss;
+        ss << str;
+        string temp;
+        vector<string> dateVec;
+
+        while(getline(ss, temp, DEFAULT_DELIMITER))
         {
             dateVec.push_back(temp);
         }
-        DateTime* returnClass = new(DateTime);
-        returnClass->day = std::stoi(dateVec[0]);
-        returnClass->month = std::stoi(dateVec[1]);
-        returnClass->year = std::stoi(dateVec[2]);
-        return returnClass;
+
+        return (new DateTime(
+                stoi(dateVec[0]),
+                stoi(dateVec[1]),
+                stoi(dateVec[2])
+        ));
 }
