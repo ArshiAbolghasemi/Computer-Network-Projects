@@ -30,3 +30,22 @@ DateTime* DateTime::stringToDate(std::string s)
         returnClass->year = std::stoi(dateVec[2]);
         return returnClass;
 }
+
+bool DateTime::operator<(const DateTime& dt2)
+{
+        tm* t1 = new(tm);
+        t1->tm_year = this->year;
+        t1->tm_mon = this->month;
+        t1->tm_mday = this->day;
+        tm* t2 = new(tm);
+        t2->tm_year = dt2.year;
+        t2->tm_mon = dt2.month;
+        t2->tm_mday = dt2.day;
+        time_t left = mktime(t1);
+        time_t right = mktime(t2);
+        if(left < right)
+        {
+            return true;
+        }
+        return false;
+}

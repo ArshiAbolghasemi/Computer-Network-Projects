@@ -17,7 +17,7 @@ public:
     DateTime();
     static std::string dateToString(DateTime& d);
     static DateTime* stringToDate(std::string s);
-
+    bool operator<(const DateTime& dt2);
 };
 
 #endif
