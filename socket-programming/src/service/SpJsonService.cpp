@@ -9,7 +9,7 @@ SPJsonService* SPJsonService::getInstance()
     return service;
 }
 
-static JsonService* getJsonServiceInstance()
+JsonService* SPJsonService::getJsonServiceInstance()
 {
     return JsonService::getInstance();
 }
