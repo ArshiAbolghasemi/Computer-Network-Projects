@@ -16,7 +16,7 @@ public:
     DateTime(int _day, int _month, int _year);
     DateTime();
     static std::string dateToString(DateTime& d);
-    static void stringToDate(std::string s, DateTime& d);
+    static DateTime* stringToDate(std::string s);
 
 };
 

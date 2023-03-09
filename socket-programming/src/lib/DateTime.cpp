@@ -14,7 +14,7 @@ std::string DateTime::dateToString(DateTime& d)
         std::getline(ss, result);
         return result;
 }
-void DateTime::stringToDate(std::string s, DateTime& d)
+DateTime* DateTime::stringToDate(std::string s)
 {
         std::stringstream ss;
         ss << s;
@@ -24,7 +24,9 @@ void DateTime::stringToDate(std::string s, DateTime& d)
         {
             dateVec.push_back(temp);
         }
-        d.day = std::stoi(dateVec[0]);
-        d.month = std::stoi(dateVec[1]);
-        d.year = std::stoi(dateVec[2]);
+        DateTime* returnClass = new(DateTime);
+        returnClass->day = std::stoi(dateVec[0]);
+        returnClass->month = std::stoi(dateVec[1]);
+        returnClass->year = std::stoi(dateVec[2]);
+        return returnClass;
 }
