@@ -33,9 +33,9 @@ public:
         bool _isAdmin
     );
 
-    virtual string getJsonFilePath();
+    static string getJsonFilePath();
 
-    virtual string getTableName();
+    static string getTableName();
 
     string getName();
 

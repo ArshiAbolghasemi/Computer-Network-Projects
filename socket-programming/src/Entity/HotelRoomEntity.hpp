@@ -31,9 +31,9 @@ public:
         vector<HotelRoomUserInfo*> _userInfos = {}
     );
 
-    virtual string getJsonFilePath();
+    static string getJsonFilePath();
 
-    virtual string getTableName();
+    static string getTableName();
 
     int getStatus();
 
