@@ -15,12 +15,24 @@ HotelRoomEntity::HotelRoomEntity(
 
 string HotelRoomEntity::getJsonFilePath()
 {
-    return "../../config/RoomsInfo.json";
+    return "RoomsInfo.json";
 }
 
 string HotelRoomEntity::getTableName()
 {
     return "rooms";
+}
+
+HotelRoomEntity* HotelRoomEntity::getInstance(json jsonData)
+{
+    return (new HotelRoomEntity(
+        jsonData.at("id"),
+        jsonData.at("stauts"),
+        jsonData.at("price"),
+        jsonData.at("maxCapacity"),
+        jsonData.at("capacity"),
+        {}
+    ));
 }
 
 int HotelRoomEntity::getStatus()

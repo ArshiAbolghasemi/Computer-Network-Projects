@@ -2,7 +2,7 @@
 #define __ENTITY_HPP
 
 #include <string>
-#include "../../../service/JsonService.hpp"
+#include "../service/SPJsonService.hpp"
 
 using namespace std;
 
@@ -16,6 +16,12 @@ public:
     Entity(int _id);
 
     int getId();
+
+    template<typename T, typename U>
+    static T* getByField(string key, U fieldValue);
+
+    template<typename T>
+    static T* getById(int id);
 };
 
 #endif

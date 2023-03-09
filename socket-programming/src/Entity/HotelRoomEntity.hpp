@@ -35,6 +35,8 @@ public:
 
     static string getTableName();
 
+    static HotelRoomEntity* getInstance(json jsonData);
+
     int getStatus();
 
     HotelRoomEntity* setStatus(int _status);
