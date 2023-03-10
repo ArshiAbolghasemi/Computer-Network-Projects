@@ -11,7 +11,10 @@ HotelRoomEntity::HotelRoomEntity(
     status(_status),
     price(_price),
     maxCapacity(_maxCapacity),
-    capacity(_capacity) {}
+    capacity(_capacity) 
+{
+    this->usersInfo.assign(_userInfos.begin(), _userInfos.end());
+}
 
 std::string HotelRoomEntity::getJsonFilePath()
 {
@@ -27,7 +30,7 @@ HotelRoomEntity* HotelRoomEntity::getInstance(nlohmann::json jsonData)
 {
     return (new HotelRoomEntity(
         jsonData.at("id"),
-        jsonData.at("stauts"),
+        jsonData.at("status"),
         jsonData.at("price"),
         jsonData.at("maxCapacity"),
         jsonData.at("capacity"),

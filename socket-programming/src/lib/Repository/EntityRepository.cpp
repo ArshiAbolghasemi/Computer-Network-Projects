@@ -6,7 +6,7 @@ T* EntityRepository<T>::getByField(std::string key, U fieldValue)
 {
     nlohmann::json jsonData = (new SPJsonService())->readfile(T::getJsonFilePath());
     nlohmann::json doc = (new JsonService())->getDocByKeyValue<U>(
-        jsonData[UserEntity::getTableName()],
+        jsonData[T::getTableName()],
         key, 
         fieldValue);
         
