@@ -2,33 +2,21 @@
 #define __SP_JSON_SERVICE
 
 #include "../../../service/JsonService.hpp"
-#include "../lib/HotelRoomUserInfo.hpp"
+#include "../../../lib/json/json.hpp"
 
 class SPJsonService
 {
 private:
-    static SPJsonService* service;
 
-    SPJsonService();
 public:
 
     const string CONFIGS_PATH_PREFIX = "../socket-programming/config/";
 
-    static SPJsonService* getInstance();
+    SPJsonService();
 
-    SPJsonService(SPJsonService &service) = delete;
+    nlohmann::json readfile(string filePath);
 
-    void operator=(const SPJsonService &) = delete;
-
-    json readfile(string filePath);
-
-    void writeToFile(json document, string filePath);
-
-    HotelRoomUserInfo* getHotelRommUserInfoFormJson(json userInfo);
-
-    vector<HotelRoomUserInfo*> getHotelRommAllUsersInfoFormJson(json usersInfo);
+    void writeToFile(nlohmann::json document, string filePath);
 };
-
-SPJsonService* SPJsonService::service = nullptr;
 
 #endif

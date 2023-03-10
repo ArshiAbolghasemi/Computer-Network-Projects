@@ -3,13 +3,13 @@
   [
     {
       "id":0,
-      "user":"Admin",
+      "name":"Admin",
       "password":"admin",
       "admin":"true"
     },
     {
       "id":1,
-      "user":"Morad",
+      "name":"Morad",
       "password":"1234",
       "admin":"false",
       "wallet":1000,
@@ -18,7 +18,7 @@
     },
     {
       "id":2,
-      "user":"Jasem",
+      "name":"Jasem",
       "password":"4321",
       "admin":"false",
       "wallet":200,
@@ -27,7 +27,7 @@
     },
     {
       "id":3,
-      "user":"Pedram",
+      "name":"Pedram",
       "password":"6789",
       "admin":"false",
       "wallet":10,

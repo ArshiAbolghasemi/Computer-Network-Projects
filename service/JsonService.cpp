@@ -4,29 +4,20 @@ using namespace std;
 
 JsonService::JsonService() {}
 
-JsonService* JsonService::getInstance()
-{
-    if(service == nullptr){
-        JsonService::service = new JsonService();
-    }
-
-    return JsonService::service;
-}
-
-json JsonService::readFile(string filePath)
+nlohmann::json JsonService::readFile(string filePath)
 {
     ifstream file(filePath);
-    return json::parse(file);
+    return nlohmann::json::parse(file);
 }
 
-void JsonService::writeToFile(json document, string filePath)
+void JsonService::writeToFile(nlohmann::json document, string filePath)
 {
     ofstream file(filePath);
     file << setw(4) << document << endl;
 }
 
 template<typename T>
-json JsonService::getDocByKeyValue(json docs, string key, T value)
+nlohmann::json JsonService::getDocByKeyValue(nlohmann::json docs, string key, T value)
 {
     for(auto doc : docs){
         if(doc[key] == value){
@@ -34,5 +25,5 @@ json JsonService::getDocByKeyValue(json docs, string key, T value)
         }
     }
 
-    return json({});
+    return nlohmann::json({});
 }

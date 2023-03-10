@@ -3,10 +3,10 @@
 HotelRoomEntity::HotelRoomEntity(
     int _id,
     int _status,
-    int _price,
+    double _price,
     int _maxCapacity,
     int _capacity,
-    vector<HotelRoomUserInfo*> _userInfos = {}
+    vector<HotelRoomUserInfo*> _userInfos
 ) : Entity(_id),
     status(_status),
     price(_price),
@@ -23,7 +23,7 @@ string HotelRoomEntity::getTableName()
     return "rooms";
 }
 
-HotelRoomEntity* HotelRoomEntity::getInstance(json jsonData)
+HotelRoomEntity* HotelRoomEntity::getInstance(nlohmann::json jsonData)
 {
     return (new HotelRoomEntity(
         jsonData.at("id"),
@@ -31,7 +31,7 @@ HotelRoomEntity* HotelRoomEntity::getInstance(json jsonData)
         jsonData.at("price"),
         jsonData.at("maxCapacity"),
         jsonData.at("capacity"),
-        SPJsonService::getInstance()->getHotelRommAllUsersInfoFormJson(jsonData["users"])
+        (new EntityService())->getHotelRommAllUsersInfoFormJson(jsonData["users"])
     ));
 }
 
@@ -51,7 +51,7 @@ int HotelRoomEntity::getPrice()
     return this->price;
 }
 
-HotelRoomEntity* HotelRoomEntity::setPrice(int _price)
+HotelRoomEntity* HotelRoomEntity::setPrice(double _price)
 {
     this->price = _price;
     return this;

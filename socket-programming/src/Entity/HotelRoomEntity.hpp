@@ -2,15 +2,18 @@
 #define __HOTEL_ROOM_ENTITY_HPP
 
 #include "Entity.hpp"
-#include "UserEntity.hpp"
-#include "../lib/HotelRoomUserInfo.hpp"
+#include "../../../lib/json/json.hpp"
+#include <vector>
+#include <string>
+#include "../lib/DateTime.hpp"
+#include "../service/EntityService.hpp"
 
 class HotelRoomEntity : public Entity
 {
 private:
     int status;
     
-    int price;
+    double price;
 
     int maxCapacity;
 
@@ -25,17 +28,17 @@ public:
     HotelRoomEntity(
         int _id,
         int _status,
-        int _price,
+        double _price,
         int _maxCapacity,
         int _capacity,
-        vector<HotelRoomUserInfo*> _userInfos = {}
+        vector<HotelRoomUserInfo*> _userInfos
     );
 
     static string getJsonFilePath();
 
     static string getTableName();
 
-    static HotelRoomEntity* getInstance(json jsonData);
+    static HotelRoomEntity* getInstance(nlohmann::json jsonData);
 
     int getStatus();
 
@@ -43,7 +46,7 @@ public:
 
     int getPrice();
 
-    HotelRoomEntity* setPrice(int _price);
+    HotelRoomEntity* setPrice(double _price);
 
     int getCapacity();
 

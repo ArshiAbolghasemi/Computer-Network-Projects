@@ -26,7 +26,7 @@ string UserEntity::getTableName()
     return "users";
 }
 
-UserEntity* UserEntity::getInstance(json jsonData)
+UserEntity* UserEntity::getInstance(nlohmann::json jsonData)
 {
     return (new UserEntity(
         jsonData.at("id"),
@@ -96,7 +96,7 @@ UserEntity* UserEntity::setAddress(string _address)
 
 bool UserEntity::hasAdminAccess()
 {
-    return this-isAdmin;
+    return this->isAdmin;
 }
 
 UserEntity* UserEntity::setAdminAccess(bool _isAdmin)

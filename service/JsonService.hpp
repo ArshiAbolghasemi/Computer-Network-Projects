@@ -5,29 +5,19 @@
 #include "../lib/json/json.hpp"
 
 using namespace std;
-using json = nlohmann::json;
-
 class JsonService
 {
 private:
-    static JsonService* service;
 
-    JsonService();
 public:
-    static JsonService* getInstance();
+    JsonService();
 
-    JsonService(JsonService &service) = delete;
+    nlohmann::json readFile(string filePath);
 
-    void operator=(const JsonService &) = delete;
-
-    json readFile(string filePath);
-
-    void writeToFile(json document, string filePath);
+    void writeToFile(nlohmann::json document, string filePath);
 
     template<typename T>
-    json getDocByKeyValue(json docs, string key, T value);
+    nlohmann::json getDocByKeyValue(nlohmann::json docs, string key, T value);
 };
-
-JsonService* JsonService::service = nullptr;
 
 #endif

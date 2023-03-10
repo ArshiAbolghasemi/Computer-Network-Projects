@@ -2,44 +2,13 @@
 
 SPJsonService::SPJsonService() {}
 
-SPJsonService* SPJsonService::getInstance()
-{
-    if(SPJsonService::service == nullptr){
-        SPJsonService::service = new SPJsonService();
-    }
 
-    return SPJsonService::service;
+nlohmann::json SPJsonService::readfile(string filePath)
+{
+    return (new JsonService())->readFile(CONFIGS_PATH_PREFIX + filePath);
 }
 
-json SPJsonService::readfile(string filePath)
+void SPJsonService::writeToFile(nlohmann::json document, string filePath)
 {
-    return JsonService::getInstance()->readFile(CONFIGS_PATH_PREFIX + filePath);
-}
-
-void SPJsonService::writeToFile(json document, string filePath)
-{
-    JsonService::getInstance()->writeToFile(document, CONFIGS_PATH_PREFIX + filePath);
-}
-
-HotelRoomUserInfo* SPJsonService::getHotelRommUserInfoFormJson(json userInfo)
-{
-    HotelRoomUserInfo *hotelRoomUserInfo = new HotelRoomUserInfo;
-
-    hotelRoomUserInfo->userId = userInfo["user_id"];
-    hotelRoomUserInfo->numOfBeds = userInfo["numOfBeds"];
-    hotelRoomUserInfo->reserveDate = DateTime::toDate(userInfo["reserveDate"]);
-    hotelRoomUserInfo->checkoutDate = DateTime::toDate(userInfo["checkoutDate"]);
-
-    return hotelRoomUserInfo;
-}
-
-vector<HotelRoomUserInfo*> SPJsonService::getHotelRommAllUsersInfoFormJson(json usersInfo)
-{
-    vector<HotelRoomUserInfo*> allUsersInfo = {};
-
-    for(auto userInfo : usersInfo){
-        allUsersInfo.push_back(this->getHotelRommUserInfoFormJson(userInfo));
-    }
-
-    return allUsersInfo;
+    (new JsonService())->writeToFile(document, CONFIGS_PATH_PREFIX + filePath);
 }

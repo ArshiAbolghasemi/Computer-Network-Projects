@@ -1,8 +1,9 @@
 #ifndef __USER_ENTITY_HPP
 #define __USER_ENTITY_HPP
 
-#include <string>
 #include "Entity.hpp"
+#include <string>
+#include "../../../lib/json/json.hpp"
 
 using namespace std;
 
@@ -37,7 +38,7 @@ public:
 
     static string getTableName();
 
-    static UserEntity* getInstance(json jsonData);
+    static UserEntity* getInstance(nlohmann::json jsonData);
 
     string getName();
 
