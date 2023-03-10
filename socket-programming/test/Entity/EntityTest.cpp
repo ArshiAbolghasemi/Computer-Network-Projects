@@ -8,7 +8,7 @@ using namespace std;
 
 void userEntityTest1()
 {
-    UserEntity* user  = EntityRepository::getByIdU(1);
+    UserEntity* user  = (new EntityRepository<UserEntity>())->getById(1);
     
     assert(user->getId() == 1);
     assert(user->getName() == "Morad");
@@ -23,7 +23,7 @@ void userEntityTest1()
 
 void userEntityTest2()
 {
-    UserEntity* user = EntityRepository::getByIdU(0);
+    UserEntity* user = (new EntityRepository<UserEntity>())->getById(0);
 
     assert(user->getId() == 0);
     assert(user->getName() == "Admin");
@@ -38,7 +38,7 @@ void userEntityTest2()
 
 void hotelRoomEntityTest1()
 {
-    HotelRoomEntity* hotelRoomEntity = EntityRepository::getByIdH(101);
+    HotelRoomEntity* hotelRoomEntity = (new EntityRepository<HotelRoomEntity>())->getById(101);
 
     assert(hotelRoomEntity->getId() == 101);
     assert(hotelRoomEntity->getStatus() == 0);
@@ -52,7 +52,7 @@ void hotelRoomEntityTest1()
 
 void hotelRoomEntityTest2()
 {
-    HotelRoomEntity* hotelRoomEntity = EntityRepository::getByIdH(301);
+    HotelRoomEntity* hotelRoomEntity = (new EntityRepository<HotelRoomEntity>())->getById(301);
 
     assert(hotelRoomEntity->getId() == 101);
     assert(hotelRoomEntity->getStatus() == 0);

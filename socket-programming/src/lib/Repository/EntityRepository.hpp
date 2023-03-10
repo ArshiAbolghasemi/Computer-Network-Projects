@@ -7,6 +7,7 @@
 #include "../../Entity/HotelRoomEntity.hpp"
 #include <string>
 
+template<class T>
 class EntityRepository
 {
 protected:
@@ -14,14 +15,9 @@ protected:
 public:
 
     template<typename U>
-    static UserEntity* getByFieldU(string key, U fieldValue);
+    T* getByField(string key, U fieldValue);
 
-    static UserEntity* getByIdU(int id);
-
-    template<typename U>
-    static HotelRoomEntity* getByFieldH(string key, U fieldValue);
-
-    static HotelRoomEntity* getByIdH(int id);
+    T* getById(int id);
 };
 
 
