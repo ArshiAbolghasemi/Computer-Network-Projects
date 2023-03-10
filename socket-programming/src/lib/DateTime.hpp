@@ -22,6 +22,15 @@ public:
     string toString();
 
     static DateTime* toDate(string str);
+
+    bool operator<(const DateTime& dt2);
+
+    bool isStringValidDate(std::string date);
 };
+
+bool isStringVectorNumber(const std::vector<std::string> dateVec);
+
+std::vector<std::string> parseStringByDelim(std::string,
+    const char delim);
 
 #endif
