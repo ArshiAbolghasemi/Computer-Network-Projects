@@ -5,6 +5,7 @@
 #include "../../service/SPJsonService.hpp"
 #include "../../Entity/UserEntity.hpp"
 #include "../../Entity/HotelRoomEntity.hpp"
+#include "../../../../service/JsonService.hpp"
 #include <string>
 
 template<class T>

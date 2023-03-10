@@ -30,7 +30,7 @@ HotelRoomEntity.o: ./src/Entity/HotelRoomEntity.cpp ./src/Entity/HotelRoomEntity
 Entity.o: ./src/Entity/Entity.cpp ./src/Entity/Entity.hpp
 	$(CC) $(CFLAGS) ./src/Entity/Entity.cpp -o Entity.o
 
-EntityRepository.o: ./src/lib/Repository/EntityRepository.cpp ./src/lib/Repository/EntityRepository.hpp ./src/Entity/UserEntity.hpp ./src/Entity/HotelRoomEntity.hpp ./src/service/SPJsonService.hpp ../lib/json/json.hpp
+EntityRepository.o: ./src/lib/Repository/EntityRepository.cpp ./src/lib/Repository/EntityRepository.hpp ./src/Entity/UserEntity.hpp ./src/Entity/HotelRoomEntity.hpp ./src/service/SPJsonService.hpp ../lib/json/json.hpp ../service/JsonService.hpp
 	$(CC) $(CFLAGS) ./src/lib/Repository/EntityRepository.cpp -o EntityRepository.o
 
 EntityService.o: ./src/service/EntityService.cpp ./src/service/EntityService.cpp ./src/lib/HotelRoomUserInfo.hpp ../lib/json/json.hpp ./src/lib/DateTime.hpp
