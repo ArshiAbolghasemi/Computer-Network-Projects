@@ -35,7 +35,7 @@ UserEntity* UserEntity::getInstance(nlohmann::json jsonData)
         jsonData.value("wallet", 0),
         jsonData.value("phoneNumber", ""),
         jsonData.value("address", ""),
-        jsonData.at("isAdmin")
+        jsonData.at("admin")
     )); 
 }
 

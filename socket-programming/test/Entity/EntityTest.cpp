@@ -56,11 +56,11 @@ void hotelRoomEntityTest2()
     EntityRepository<HotelRoomEntity>* repo = new EntityRepository<HotelRoomEntity>();
     HotelRoomEntity* hotelRoomEntity = repo->getById(301);
 
-    assert(hotelRoomEntity->getId() == 101);
+    assert(hotelRoomEntity->getId() == 301);
     assert(hotelRoomEntity->getStatus() == 0);
     assert(hotelRoomEntity->getPrice() == 100);
-    assert(hotelRoomEntity->getMaxCapacity() == 2);
-    assert(hotelRoomEntity->getCapacity() == 2);
+    assert(hotelRoomEntity->getMaxCapacity() == 1);
+    assert(hotelRoomEntity->getCapacity() == 0);
     assert(hotelRoomEntity->getAllUser().empty() == false);
     assert(hotelRoomEntity->getAllUser()[0]->userId == 2);
     assert(hotelRoomEntity->getAllUser()[0]->numOfBeds == 1);

@@ -8,7 +8,11 @@ DateTime::DateTime(int _day, int _month, int _year) :
 std::string DateTime::toString()
 {
         std::stringstream ss;
-        ss << this->day << DEFAULT_DELIMITER << this->month << DEFAULT_DELIMITER << this->year;
+        ss << setfill('0') << setw(2) << this->day
+           << DEFAULT_DELIMITER 
+           << setfill('0') << setw(2) << this->month 
+           << DEFAULT_DELIMITER 
+           << this->year;
 
         std::string res;
         std::getline(ss, res);

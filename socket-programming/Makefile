@@ -35,10 +35,10 @@ EntityRepository.o: ./src/lib/EntityRepository.cpp ./include/lib/EntityRepositor
 	$(CC) $(CFLAGS) -I ./include ./src/lib/EntityRepository.cpp -o EntityRepository.o
 
 EntityService.o: ./src/service/EntityService.cpp ./include/service/EntityService.hpp ./include/lib/HotelRoomUserInfo.hpp ./include/lib/DateTime.hpp
-	$(CC) $(CFLAGS) ./src/service/EntityService.cpp -o EntityService.o
+	$(CC) $(CFLAGS)  -I ./include ./src/service/EntityService.cpp -o EntityService.o
 
 SPJsonService.o: ./src/service/SPJsonService.cpp ./include/service/SPJsonService.hpp
-	$(CC) $(CFLAGS) ./src/service/SPJsonService.cpp -o SPJsonService.o
+	$(CC) $(CFLAGS)  -I ./include ./src/service/SPJsonService.cpp -o SPJsonService.o
 
 DateTime.o: ./src/lib/DateTime.cpp ./include/lib/DateTime.hpp
 	$(CC) $(CFLAGS) -I ./include ./src/lib/DateTime.cpp -o DateTime.o

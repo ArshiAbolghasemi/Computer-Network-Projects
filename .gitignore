@@ -1,3 +1,5 @@
 *.vscode
 *project-description
 buckaroo
+*.o
+*.d
