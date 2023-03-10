@@ -1,8 +1,8 @@
 #include <cassert>
 #include <iostream>
-#include "../../src/lib/Repository/EntityRepository.hpp"
-#include "../../src/Entity/UserEntity.hpp"
-#include "../../src/Entity/HotelRoomEntity.hpp"
+#include "../../include/lib/EntityRepository.hpp"
+#include "../../include/Entity/UserEntity.hpp"
+#include "../../include/Entity/HotelRoomEntity.hpp"
 
 void userEntityTest1()
 {

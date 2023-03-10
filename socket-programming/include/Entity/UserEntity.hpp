@@ -3,7 +3,7 @@
 
 #include "Entity.hpp"
 #include <string>
-#include "../../../lib/json/json.hpp"
+#include "../lib/json.hpp"
 
 class UserEntity : public Entity
 {

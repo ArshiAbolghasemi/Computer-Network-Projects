@@ -1,4 +1,4 @@
-#include "Entity.hpp"
+#include "../../include/Entity/Entity.hpp"
 
 Entity::Entity(int _id) : id(_id) {}
 

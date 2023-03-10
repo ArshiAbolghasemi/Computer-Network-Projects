@@ -1,8 +1,8 @@
 #ifndef __SP_JSON_SERVICE
 #define __SP_JSON_SERVICE
 
-#include "../../../service/JsonService.hpp"
-#include "../../../lib/json/json.hpp"
+#include <fstream>
+#include "../lib/json.hpp"
 
 class SPJsonService
 {
@@ -17,6 +17,9 @@ public:
     nlohmann::json readfile(std::string filePath);
 
     void writeToFile(nlohmann::json document, std::string filePath);
+
+    template<typename T>
+    nlohmann::json getDocByKeyValue(nlohmann::json docs, std::string key, T value);
 };
 
 #endif

@@ -1,4 +1,4 @@
-#include "UserEntity.hpp"
+#include "../../include/Entity/UserEntity.hpp"
 
 UserEntity::UserEntity(
     int _id,

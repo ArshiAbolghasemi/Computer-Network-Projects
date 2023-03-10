@@ -1,11 +1,12 @@
-#include "EntityRepository.hpp"
+#include "../../include/lib/EntityRepository.hpp"
 
 template<class T>
 template<typename U>
 T* EntityRepository<T>::getByField(std::string key, U fieldValue)
 {
-    nlohmann::json jsonData = (new SPJsonService())->readfile(T::getJsonFilePath());
-    nlohmann::json doc = (new JsonService())->getDocByKeyValue<U>(
+    SPJsonService* service = new SPJsonService();
+    nlohmann::json jsonData = service->readfile(T::getJsonFilePath());
+    nlohmann::json doc = service->getDocByKeyValue<U>(
         jsonData[UserEntity::getTableName()],
         key, 
         fieldValue);

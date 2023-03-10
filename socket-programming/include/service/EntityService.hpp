@@ -1,7 +1,7 @@
 #ifndef __ENTITY_SERVICE_HPP
 #define __ENTITY_SERVICE_HPP
 
-#include "../../../lib/json/json.hpp"
+#include "../lib/json.hpp"
 #include "../lib/HotelRoomUserInfo.hpp"
 #include "../lib/DateTime.hpp"
 

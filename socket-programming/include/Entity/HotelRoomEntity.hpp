@@ -2,7 +2,7 @@
 #define __HOTEL_ROOM_ENTITY_HPP
 
 #include "Entity.hpp"
-#include "../../../lib/json/json.hpp"
+#include "../lib/json.hpp"
 #include <vector>
 #include <string>
 #include "../lib/DateTime.hpp"
