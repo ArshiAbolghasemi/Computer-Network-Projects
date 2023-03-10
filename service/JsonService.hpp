@@ -3,8 +3,6 @@
 
 #include <fstream>
 #include "../lib/json/json.hpp"
-
-using namespace std;
 class JsonService
 {
 private:
@@ -12,7 +10,7 @@ private:
 public:
     JsonService();
 
-    nlohmann::json readFile(string filePath);
+    nlohmann::json readFile(std::string filePath);
 
     void writeToFile(nlohmann::json document, std::string filePath);
 

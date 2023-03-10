@@ -10,7 +10,7 @@ private:
 
 public:
 
-    const std::string CONFIGS_PATH_PREFIX = "../socket-programming/config/";
+    const std::string CONFIGS_PATH_PREFIX = "/computer_network/socket-programming/config/";
 
     SPJsonService();
 
