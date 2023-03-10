@@ -20,5 +20,4 @@ public:
     T* getById(int id);
 };
 
-
 #endif

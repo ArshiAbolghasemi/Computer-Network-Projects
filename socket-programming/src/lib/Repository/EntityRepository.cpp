@@ -4,7 +4,7 @@ template<class T>
 template<typename U>
 T* EntityRepository<T>::getByField(string key, U fieldValue)
 {
-    nlohmann::json jsonData = (new SPJsonService())->readfile(UserEntity::getJsonFilePath());
+    nlohmann::json jsonData = (new SPJsonService())->readfile(T::getJsonFilePath());
     nlohmann::json doc = (new JsonService())->getDocByKeyValue<U>(
         jsonData[UserEntity::getTableName()],
         key, 
@@ -14,7 +14,7 @@ T* EntityRepository<T>::getByField(string key, U fieldValue)
         return nullptr;
     }
 
-    return UserEntity::getInstance(doc);
+    return T::getInstance(doc);
 }
 
 template<class T>
@@ -22,3 +22,6 @@ T* EntityRepository<T>::getById(int id)
 {
     return this->getByField<int>("id", id);
 }
+
+template class EntityRepository<UserEntity>;
+template class EntityRepository<HotelRoomEntity>;
