@@ -14,9 +14,9 @@ HotelRoomUserInfo* EntityService::getHotelRommUserInfoFormJson(nlohmann::json us
     return hotelRoomUserInfo;
 }
 
-vector<HotelRoomUserInfo*> EntityService::getHotelRommAllUsersInfoFormJson(nlohmann::json usersInfo)
+std::vector<HotelRoomUserInfo*> EntityService::getHotelRommAllUsersInfoFormJson(nlohmann::json usersInfo)
 {
-    vector<HotelRoomUserInfo*> allUsersInfo = {};
+    std::vector<HotelRoomUserInfo*> allUsersInfo = {};
 
     for(auto userInfo : usersInfo){
         allUsersInfo.push_back(this->getHotelRommUserInfoFormJson(userInfo));

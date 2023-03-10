@@ -19,9 +19,9 @@ public:
 
     DateTime(int _day, int _month, int _year);
 
-    string toString();
+    std::string toString();
 
-    static DateTime* toDate(string str);
+    static DateTime* toDate(std::string str);
 };
 
 #endif

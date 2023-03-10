@@ -1,23 +1,21 @@
 #include "JsonService.hpp"
 
-using namespace std;
-
 JsonService::JsonService() {}
 
-nlohmann::json JsonService::readFile(string filePath)
+nlohmann::json JsonService::readFile(std::string filePath)
 {
     ifstream file(filePath);
     return nlohmann::json::parse(file);
 }
 
-void JsonService::writeToFile(nlohmann::json document, string filePath)
+void JsonService::writeToFile(nlohmann::json document, std::string filePath)
 {
     ofstream file(filePath);
     file << setw(4) << document << endl;
 }
 
 template<typename T>
-nlohmann::json JsonService::getDocByKeyValue(nlohmann::json docs, string key, T value)
+nlohmann::json JsonService::getDocByKeyValue(nlohmann::json docs, std::string key, T value)
 {
     for(auto doc : docs){
         if(doc[key] == value){

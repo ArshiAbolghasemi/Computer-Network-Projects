@@ -5,60 +5,58 @@
 #include <string>
 #include "../../../lib/json/json.hpp"
 
-using namespace std;
-
 class UserEntity : public Entity
 {
 private:
     int id;
 
-    string name;
+    std::string name;
 
-    string password;
+    std::string password;
 
     double wallet;
 
-    string phoneNumber;
+    std::string phoneNumber;
 
-    string address;
+    std::string address;
     
     bool isAdmin;
 public:
     UserEntity(
         int _id,
-        string _name,
-        string _password,
+        std::string _name,
+        std::string _password,
         double _wallet,
-        string _phoneNumber,
-        string _address,
+        std::string _phoneNumber,
+        std::string _address,
         bool _isAdmin
     );
 
-    static string getJsonFilePath();
+    static std::string getJsonFilePath();
 
-    static string getTableName();
+    static std::string getTableName();
 
     static UserEntity* getInstance(nlohmann::json jsonData);
 
-    string getName();
+    std::string getName();
 
-    UserEntity* setName(string _name);
+    UserEntity* setName(std::string _name);
 
-    string getPassword();
+    std::string getPassword();
 
-    UserEntity* setPassword(string _password);
+    UserEntity* setPassword(std::string _password);
 
     double getWallet();
 
     UserEntity* setWallet(double _wallet);
 
-    string getPhoneNumber();
+    std::string getPhoneNumber();
 
-    UserEntity* setPhoneNumber(string _phoneNumber);
+    UserEntity* setPhoneNumber(std::string _phoneNumber);
 
-    string getAddress();
+    std::string getAddress();
 
-    UserEntity* setAddress(string _address);
+    UserEntity* setAddress(std::string _address);
 
     bool hasAdminAccess();
 

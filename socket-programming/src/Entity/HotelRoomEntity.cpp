@@ -13,12 +13,12 @@ HotelRoomEntity::HotelRoomEntity(
     maxCapacity(_maxCapacity),
     capacity(_capacity) {}
 
-string HotelRoomEntity::getJsonFilePath()
+std::string HotelRoomEntity::getJsonFilePath()
 {
     return "RoomsInfo.json";
 }
 
-string HotelRoomEntity::getTableName()
+std::string HotelRoomEntity::getTableName()
 {
     return "rooms";
 }
@@ -79,7 +79,7 @@ HotelRoomEntity* HotelRoomEntity::setMaxCapacity(int _maxCapacity)
     return this;
 }
 
-vector<HotelRoomUserInfo*> HotelRoomEntity::getAllUser()
+std::vector<HotelRoomUserInfo*> HotelRoomEntity::getAllUser()
 {
     return this->usersInfo;
 }

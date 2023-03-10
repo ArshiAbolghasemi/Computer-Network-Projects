@@ -10,13 +10,13 @@ private:
 
 public:
 
-    const string CONFIGS_PATH_PREFIX = "../socket-programming/config/";
+    const std::string CONFIGS_PATH_PREFIX = "../socket-programming/config/";
 
     SPJsonService();
 
-    nlohmann::json readfile(string filePath);
+    nlohmann::json readfile(std::string filePath);
 
-    void writeToFile(nlohmann::json document, string filePath);
+    void writeToFile(nlohmann::json document, std::string filePath);
 };
 
 #endif

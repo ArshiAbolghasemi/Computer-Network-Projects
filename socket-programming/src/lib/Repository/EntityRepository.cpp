@@ -2,7 +2,7 @@
 
 template<class T>
 template<typename U>
-T* EntityRepository<T>::getByField(string key, U fieldValue)
+T* EntityRepository<T>::getByField(std::string key, U fieldValue)
 {
     nlohmann::json jsonData = (new SPJsonService())->readfile(T::getJsonFilePath());
     nlohmann::json doc = (new JsonService())->getDocByKeyValue<U>(

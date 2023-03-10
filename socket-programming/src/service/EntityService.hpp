@@ -14,7 +14,7 @@ public:
 
     HotelRoomUserInfo* getHotelRommUserInfoFormJson(nlohmann::json userInfo);
 
-    vector<HotelRoomUserInfo*> getHotelRommAllUsersInfoFormJson(nlohmann::json usersInfo);
+    std::vector<HotelRoomUserInfo*> getHotelRommAllUsersInfoFormJson(nlohmann::json usersInfo);
 };
 
 #endif

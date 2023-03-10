@@ -2,11 +2,11 @@
 
 UserEntity::UserEntity(
     int _id,
-    string _name,
-    string _password,
+    std::string _name,
+    std::string _password,
     double _wallet,
-    string _phoneNumber,
-    string _address,
+    std::string _phoneNumber,
+    std::string _address,
     bool _isAdmin
 ) : Entity(_id),
     name(_name), 
@@ -16,12 +16,12 @@ UserEntity::UserEntity(
     address(_address),
     isAdmin(_isAdmin) {}
 
-string UserEntity::getJsonFilePath()
+std::string UserEntity::getJsonFilePath()
 {
     return "UsersInfo.json";
 }
 
-string UserEntity::getTableName()
+std::string UserEntity::getTableName()
 {
     return "users";
 }
@@ -39,23 +39,23 @@ UserEntity* UserEntity::getInstance(nlohmann::json jsonData)
     )); 
 }
 
-string UserEntity::getName()
+std::string UserEntity::getName()
 {
     return this->name;
 }
 
-UserEntity* UserEntity::setName(string _name)
+UserEntity* UserEntity::setName(std::string _name)
 {
     this->name = _name;
     return this;
 }
 
-string UserEntity::getPassword()
+std::string UserEntity::getPassword()
 {
     return this->password;
 }
 
-UserEntity* UserEntity::setPassword(string _password)
+UserEntity* UserEntity::setPassword(std::string _password)
 {
     this->password = _password;
     return this;
@@ -72,23 +72,23 @@ UserEntity* UserEntity::setWallet(double _wallet)
     return this;
 }
 
-string UserEntity::getPhoneNumber()
+std::string UserEntity::getPhoneNumber()
 {
     return this->phoneNumber;
 }
 
-UserEntity* UserEntity::setPhoneNumber(string _phoneNumber)
+UserEntity* UserEntity::setPhoneNumber(std::string _phoneNumber)
 {
     this->phoneNumber = _phoneNumber;
     return this;
 }
 
-string UserEntity::getAddress()
+std::string UserEntity::getAddress()
 {
     return this->address;
 }
 
-UserEntity* UserEntity::setAddress(string _address)
+UserEntity* UserEntity::setAddress(std::string _address)
 {
     this->address = _address;
     return this;

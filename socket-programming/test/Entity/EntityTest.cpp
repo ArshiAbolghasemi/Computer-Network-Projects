@@ -4,8 +4,6 @@
 #include "../../src/Entity/UserEntity.hpp"
 #include "../../src/Entity/HotelRoomEntity.hpp"
 
-using namespace std;
-
 void userEntityTest1()
 {
     EntityRepository<UserEntity>* repo = new EntityRepository<UserEntity>();
@@ -19,7 +17,7 @@ void userEntityTest1()
     assert(user->getPhoneNumber() == "00945692356");
     assert(user->getAddress() == "Canada, Montral");
 
-    cout << "User Entity Test#1 passed\n";
+    std::cout << "User Entity Test#1 passed\n";
 }
 
 void userEntityTest2()
@@ -35,7 +33,7 @@ void userEntityTest2()
     assert(user->getPhoneNumber() == "");
     assert(user->getAddress() == "");
 
-    cout << "User Entity Test#2 passed\n";
+    std::cout << "User Entity Test#2 passed\n";
 }
 
 void hotelRoomEntityTest1()
@@ -50,7 +48,7 @@ void hotelRoomEntityTest1()
     assert(hotelRoomEntity->getCapacity() == 2);
     assert(hotelRoomEntity->getAllUser().empty() == true);
     
-    cout << "Hotel Room Entity Test#1 passed\n";
+    std::cout << "Hotel Room Entity Test#1 passed\n";
 }
 
 void hotelRoomEntityTest2()
@@ -73,7 +71,7 @@ void hotelRoomEntityTest2()
     assert(hotelRoomEntity->getAllUser()[1]->reserveDate->toString() == "25-02-2023");
     assert(hotelRoomEntity->getAllUser()[1]->checkoutDate->toString() == "26-02-2023");
     
-    cout << "Hotel Room Entity Test#2 passed\n";
+    std::cout << "Hotel Room Entity Test#2 passed\n";
 }
 
 int main()

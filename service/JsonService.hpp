@@ -14,10 +14,10 @@ public:
 
     nlohmann::json readFile(string filePath);
 
-    void writeToFile(nlohmann::json document, string filePath);
+    void writeToFile(nlohmann::json document, std::string filePath);
 
     template<typename T>
-    nlohmann::json getDocByKeyValue(nlohmann::json docs, string key, T value);
+    nlohmann::json getDocByKeyValue(nlohmann::json docs, std::string key, T value);
 };
 
 #endif

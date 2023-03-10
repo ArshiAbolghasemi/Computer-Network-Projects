@@ -19,7 +19,7 @@ private:
 
     int capacity;
 
-    vector<HotelRoomUserInfo*> usersInfo;
+    std::vector<HotelRoomUserInfo*> usersInfo;
 public:
 
     const int FULL_STATUS = 1;
@@ -31,12 +31,12 @@ public:
         double _price,
         int _maxCapacity,
         int _capacity,
-        vector<HotelRoomUserInfo*> _userInfos
+        std::vector<HotelRoomUserInfo*> _userInfos
     );
 
-    static string getJsonFilePath();
+    static std::string getJsonFilePath();
 
-    static string getTableName();
+    static std::string getTableName();
 
     static HotelRoomEntity* getInstance(nlohmann::json jsonData);
 
@@ -56,7 +56,7 @@ public:
 
     HotelRoomEntity* setMaxCapacity(int _maxCapacity);
 
-    vector<HotelRoomUserInfo*> getAllUser();
+    std::vector<HotelRoomUserInfo*> getAllUser();
 
     HotelRoomUserInfo* getUserInfo(int _userId);
 
