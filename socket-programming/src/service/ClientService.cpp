@@ -22,11 +22,11 @@ void runClient(int cli_fd)
         selectSysCall(cli_fd+1, &temp);
         if(FD_ISSET(0, &temp))
         {
-            clientRecieveHandle()
+            clientRecieveHandle(); // Rcv Msg logic
         }
         else if(FD_ISSET(cli_fd, &temp))
         {
-            clientSendHandle()
+            clientSendHandle(); // Send Msg logic
         }
     }
 }
