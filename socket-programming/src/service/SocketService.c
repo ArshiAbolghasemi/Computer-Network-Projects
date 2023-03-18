@@ -30,7 +30,7 @@ void setSocketOption(int _fd, int _level,int _optName)
     return;
 }
 
-struct sockaddr_in createSocketAddressIn(int port, char* host)
+struct sockaddr_in createSocketAddressIn(int port, const char* host)
 {
     struct sockaddr_in srv;
     
@@ -128,7 +128,7 @@ void readSocket(int _fd, char* buffer)
     return;
 }
 
-void sendMsg(int _fd, char* buffer)
+void sendMsg(int _fd, const char* buffer)
 {
     if(send(_fd, buffer, strlen(buffer), 0) < 0){
         logErrorToConsole("failed to send message to socket, socket_fd: %d", _fd);

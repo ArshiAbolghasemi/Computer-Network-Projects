@@ -2,10 +2,20 @@
 #define __SERVER_SERVICE_HPP_
 
 #include "SocketService.h"
+#include "ErrorCheckerService.hpp"
+#include <iostream>
+#include <vector>
+#include <string>
 
-#define SERVER_ADDRESS "127.0.0.1"
-#define SERVER_PORT 11000
-#define WELCOME "Welcome...!\n1)To sign up\n2)To sign in\n"
+// port should be read from json
+#define SERVER_PORT 11000 // defined port for testing purposes
+const char* WELCOME = "Welcome...!\n1)To sign up\n2)To sign in\n";
+const char* SERVER_ADDRESS = "127.0.0.1";
+const char* COMMAND = "Command -> ";
+const char* HELP = "Help -> ";
+const char* SET_TIME = "setTime <Date Time>\n";
+const char* SET_TIME_HELP = "Date time format: 25-02-2023\n";
+const char* INDICATOR = ">> ";
 
 int setupServer();
 
@@ -14,5 +24,7 @@ void runServer(int serverFD);
 int newClientHandle(fd_set* master, int serverFD);
 
 void manageClient();
+
+void setTime();
 
 #endif

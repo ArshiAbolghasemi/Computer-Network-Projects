@@ -12,6 +12,19 @@ int setupServer()
     return serverFD;
 }
 
+void setTime()
+{
+    std::cout << COMMAND << SET_TIME;
+    std::cout << HELP << SET_TIME_HELP;
+    std::cout << INDICATOR;
+    std::string line;
+    std::getline(std::cin, line, '\0');
+    if(ErrorChecker::setTimeCheck(line) == false)
+    {
+        // ErrorHandler::
+    }
+}
+
 void runServer(int serverFD)
 {
     fd_set master, temp;
@@ -48,6 +61,7 @@ int newClientHandle(fd_set* master, int serverFD)
     int client_fd = acceptClient(serverFD);
     FD_SET(client_fd, master);
     sendMsg(client_fd, WELCOME);
+    return client_fd;
 }
 
 void manageClient()

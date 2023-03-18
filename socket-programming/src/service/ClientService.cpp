@@ -1,6 +1,6 @@
 #include "../../include/service/ClientService.hpp"
 
-int serverConnect(int port, char* host)
+int serverConnect(int port, const char* host)
 {
     int cli_fd = createSocket(AF_INET, SOCK_STREAM, 0);
     struct sockaddr_in cli = createSocketAddressIn(

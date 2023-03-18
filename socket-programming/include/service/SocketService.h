@@ -25,7 +25,7 @@ int createSocket(int _domain, int _type, int _protocol);
 
 void setSocketOption(int _fd, int _level, int _optName);
 
-struct sockaddr_in createSocketAddressIn(int port, char* host);
+struct sockaddr_in createSocketAddressIn(int port, const char* host);
 
 void bindSocket(int _fd, struct sockaddr_in srv);
 
@@ -39,7 +39,7 @@ void connectToSocket(int _fd, struct sockaddr_in srv_addr);
 
 void readSocket(int _fd, char* buffer);
 
-void sendMsg(int _fd, char* buffer);
+void sendMsg(int _fd, const char* buffer);
 
 #ifdef __cplusplus
 }
