@@ -17,9 +17,9 @@ extern "C"
 #include <unistd.h>
 #include "LogService.h"
 
-#define MAX_BUFFER_LENGTH 1024
+const int MAX_BUFFER_LENGTH  = 1024;
 
-#define MAX_CLIENT_LISTEN_TO 30
+const int MAX_CLIENT_LISTEN_TO = 30;
 
 int createSocket(int _domain, int _type, int _protocol);
 

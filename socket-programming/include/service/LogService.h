@@ -10,11 +10,11 @@ extern "C"
 #include <stdio.h>
 #include <time.h>
 
-#define ERROR_TYPE "ERROR"
-#define INFO_TYPE "INFO"
-#define WARNING_TYPE "WARNING"
+const char* ERROR_TYPE = "ERROR";
+const char* INFO_TYPE = "INFO";
+const char* WARNING_TYPE  ="WARNING";
 
-#define LOG_FILE_PATH "../log.txt" // accessible from all the source files to the one exact location
+const char* LOG_FILE_PATH  = "../log.txt"; // accessible from all the source files to the one exact location
 
 static void logMsg(FILE* _stream, char* _type, char* _format, va_list _args);
 

@@ -1,4 +1,6 @@
 #include "../../include/service/ClientService.hpp"
+#include "../../include/service/SocketService.h"
+
 
 int serverConnect(int port, const char* host)
 {
@@ -8,6 +10,7 @@ int serverConnect(int port, const char* host)
     setSocketOption(cli_fd, SOL_SOCKET, SO_REUSEADDR);
     setSocketOption(cli_fd, SOL_SOCKET, SO_REUSEPORT);
     connectToSocket(cli_fd, cli);
+    return cli_fd;
 }
 
 void runClient(int cli_fd)
@@ -22,11 +25,11 @@ void runClient(int cli_fd)
         selectSysCall(cli_fd+1, &temp);
         if(FD_ISSET(0, &temp))
         {
-            clientRecieveHandle(); // Rcv Msg logic
+            // clientRecieveHandle(); // Rcv Msg logic
         }
         else if(FD_ISSET(cli_fd, &temp))
         {
-            clientSendHandle(); // Send Msg logic
+            // clientSendHandle(); // Send Msg logic
         }
     }
 }

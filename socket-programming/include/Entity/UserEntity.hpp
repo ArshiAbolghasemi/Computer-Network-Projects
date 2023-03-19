@@ -21,6 +21,8 @@ private:
     std::string address;
     
     bool isAdmin;
+
+    int file_d;
 public:
     UserEntity(
         int _id,

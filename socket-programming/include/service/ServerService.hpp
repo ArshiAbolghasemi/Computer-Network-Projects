@@ -1,11 +1,14 @@
 #ifndef __SERVER_SERVICE_HPP_
 #define __SERVER_SERVICE_HPP_
 
-#include "SocketService.h"
-#include "ErrorCheckerService.hpp"
+#include <string>
 #include <iostream>
 #include <vector>
-#include <string>
+#include <fstream>
+#include "SocketService.h"
+#include "../Entity/UserEntity.hpp"
+#include "../Entity/HotelRoomEntity.hpp"
+#include "ErrorCheckerService.hpp"
 
 // port should be read from json
 #define SERVER_PORT 11000 // defined port for testing purposes
@@ -23,8 +26,12 @@ void runServer(int serverFD);
 
 int newClientHandle(fd_set* master, int serverFD);
 
-void manageClient();
+void manageClient(int fd);
 
 void setTime();
+
+std::vector<UserEntity*> initClientsFromJson();
+
+std::vector<HotelRoomEntity*> initHotelRoomsFromJson();
 
 #endif

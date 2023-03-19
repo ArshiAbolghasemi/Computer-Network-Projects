@@ -27,6 +27,10 @@ void setTime()
 
 void runServer(int serverFD)
 {
+    setTime();
+    std::vector<UserEntity*> uVec = initClientsFromJson();
+    std::vector<HotelRoomEntity*> hVec =
+         initHotelRoomsFromJson();
     fd_set master, temp;
     FD_ZERO(&master);
     int max_ind = serverFD;
@@ -49,7 +53,7 @@ void runServer(int serverFD)
                 }
                 else
                 {
-                    manageClient();
+                    manageClient(i);
                 }
             }
         }
@@ -64,7 +68,45 @@ int newClientHandle(fd_set* master, int serverFD)
     return client_fd;
 }
 
-void manageClient()
+void manageClient(int d)
 {
     // client managing logic
+}
+
+std::vector<UserEntity*> initClientsFromJson()
+{
+    std::string conf = "../../config";
+    std::ifstream file(conf + 
+        UserEntity::getJsonFilePath());
+    std::vector<UserEntity*> res;
+    if(file.good())
+    {
+        nlohmann::json j;
+        file >> j;
+        for(auto us: j["users"])
+        {
+            res.push_back(UserEntity::getInstance(us));
+        }
+        return res;
+    }
+    perror("file not open");
+}
+
+std::vector<HotelRoomEntity*> initHotelRoomsFromJson()
+{
+    std::string conf = "../../config";
+    std::ifstream file(conf + 
+        UserEntity::getJsonFilePath());
+    std::vector<HotelRoomEntity*> res;
+    if(file.good())
+    {
+        nlohmann::json j;
+        file >> j;
+        for(auto us: j["users"])
+        {
+            res.push_back(HotelRoomEntity::getInstance(us));
+        }
+        return res;
+    }
+    perror("file not open");
 }
