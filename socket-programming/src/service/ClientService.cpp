@@ -1,5 +1,7 @@
 #include "../../include/service/ClientService.hpp"
-#include "../../include/service/SocketService.h"
+extern "C"{
+    #include "../../include/service/SocketService.h"   
+}
 
 
 int serverConnect(int port, const char* host)

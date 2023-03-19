@@ -18,6 +18,8 @@ public:
 
     static const char DEFAULT_DELIMITER = '-';
 
+    DateTime(){}
+
     DateTime(int _day, int _month, int _year);
 
     std::string toString();
