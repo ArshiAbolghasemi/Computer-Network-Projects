@@ -104,3 +104,19 @@ UserEntity* UserEntity::setAdminAccess(bool _isAdmin)
     this->isAdmin = _isAdmin;
     return this;
 }
+
+int UserEntity::getFileDescriptor()
+{
+    return file_d;
+}
+
+void UserEntity::setFileDescriptor(int fd)
+{
+    this->file_d = fd;
+}
+
+bool UserEntity::usrAuth(std::string usr,
+     std::string pass)
+{
+    return (usr == this->name && pass == this->password);
+}

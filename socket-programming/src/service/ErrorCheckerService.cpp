@@ -27,3 +27,29 @@ bool ErrorChecker::setTimeCheck(std::string inp)
     }
     return true;
 }
+
+UserEntity* ErrorChecker::signInCheck(std::string inp)
+{
+    std::vector<std::string> test = 
+        StringService::parseStringByDelim(inp, ' ');
+    if(test.size() != 3)
+    {
+        return nullptr;
+    }
+    if(test[0] != "signin")
+    {
+        return nullptr;
+    }
+    UserEntity* userInCheck = 
+        EntityRepository<UserEntity>::getByField<std::string>(
+        "name", test[1]);
+    if(userInCheck == nullptr)
+    {
+        return nullptr;
+    }
+    if(userInCheck->getPassword() != test[2])
+    {
+        return nullptr;
+    }
+    return userInCheck;
+}

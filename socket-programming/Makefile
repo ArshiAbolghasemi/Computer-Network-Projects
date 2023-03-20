@@ -74,7 +74,7 @@ ServerEntity.o: ./src/Entity/ServerEntity.cpp ./include/Entity/ServerEntity.hpp 
 StringService.o: ./src/service/StringService.cpp ./include/service/StringService.hpp
 	$(CPP) $(CPPFLAGS) -I ./include $(SP_PROJECT_SERVICE_DIR)/StringService.cpp -o StringService.o
 
-ErrorCheckerService.o: $(SP_PROJECT_SERVICE_DIR)/ErrorCheckerService.cpp ./include/service/ErrorCheckerService.hpp ./include/service/StringService.hpp
+ErrorCheckerService.o: $(SP_PROJECT_SERVICE_DIR)/ErrorCheckerService.cpp ./include/service/ErrorCheckerService.hpp ./include/service/StringService.hpp ./include/Entity/UserEntity.hpp ./include/lib/EntityRepository.hpp ./include/service/SPJsonService.hpp
 	$(CPP) $(CPPFLAGS) -I ./include $(SP_PROJECT_SERVICE_DIR)/ErrorCheckerService.cpp -o ErrorCheckerService.o
 
 clean:

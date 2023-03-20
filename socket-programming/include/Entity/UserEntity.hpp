@@ -64,6 +64,12 @@ public:
     bool hasAdminAccess();
 
     UserEntity* setAdminAccess(bool _isAdmin);
+
+    int getFileDescriptor();
+
+    void setFileDescriptor(int fd);
+
+    bool usrAuth(std::string usr, std::string pass);
 };
 
 #endif

@@ -15,7 +15,7 @@ protected:
 public:
 
     template<typename U>
-    T* getByField(std::string key, U fieldValue);
+    static T* getByField(std::string key, U fieldValue);
 
     T* getById(int id);
 };

@@ -50,23 +50,36 @@ void ClientEntity::receiveHandle(int fd)
         _status = FIRST_MENU_PAT;
         // FIRST MENU HANDLE
         FMenuProtocol();
-    }
-    else if(strncmp(buffer, (const char*)
-        SIGNUP_PAT, strlen(SIGNUP_PAT)) == 0)
-    {
-        _status = SIGNIN_PAT;
-        SignInProtocol();
+        return;
     }
     else if(strncmp(buffer, (const char*)
         SIGNIN_PAT, strlen(SIGNIN_PAT)) == 0)
     {
         _status = SIGNIN_PAT;
+        SignInProtocol();
+        return;
+    }
+    else if(strncmp(buffer, (const char*)
+        SIGNUP_PAT, strlen(SIGNUP_PAT)) == 0)
+    {
+        _status = SIGNUP_PAT;
+        // protocol
     }
     else if(strncmp(buffer, (const char*)
         ERR_PAT, strlen(ERR_PAT)) == 0)
     {
-        // previous protocol
+        ErrorProtocol(buffer);
         return;
+    }
+    else if(strncmp(buffer, SUC_PAT, strlen(SUC_PAT)) == 0)
+    {
+        std::string s = StringService::deTokenize(
+            SUC_PAT, buffer);
+        printByLookup(std::stoi(s));
+    }
+    else if(strncmp(buffer, MAIN_MENU, strlen(MAIN_MENU)))
+    {
+        MainMenuProtocol();
     }
 }
 
@@ -85,4 +98,42 @@ void ClientEntity::sendHandle(int srv_fd)
 void ClientEntity::FMenuProtocol()
 {
     std::cout << WELCOME;
+    std::cout << INDICATOR;
+}
+
+void ClientEntity::SignInProtocol()
+{
+    std::cout << COMMAND << SIGNIN_OPTION
+        << HELP << SIGNIN_HELP << INDICATOR;
+}
+
+void ClientEntity::ErrorProtocol(const char* buf)
+{
+    // error handler
+    std::string errNum = 
+        StringService::deTokenize(ERR_PAT, buf);
+    printByLookup(std::stoi(errNum));
+    if(_status == FIRST_MENU_PAT)
+    {
+        FMenuProtocol();
+    }
+    else if(_status == SIGNIN_PAT)
+    {
+        SignInProtocol();
+    }
+    else if(_status == SIGNUP_PAT)
+    {
+        // SignUpProtocol();
+    }
+}
+
+void ClientEntity::printByLookup(int lookup)
+{
+    std::cout << ERR_MSG << lookup << ": ";
+    std::cout << errLookup[lookup];
+}
+
+void ClientEntity::MainMenuProtocol()
+{
+    std::cout << MAIN;
 }

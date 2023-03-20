@@ -50,3 +50,14 @@ std::string StringService::addStatus(const char* inp,
     std::string res = status + temp;
     return res;
 }
+
+std::string StringService::deTokenize(const char* token, 
+    const char* buf)
+{
+    char temp[MAX_BUFFER_LENGTH];
+    memset(temp, 0, MAX_BUFFER_LENGTH);
+    strcpy(temp, buf);
+    char* detoken = strtok(temp, token);
+    std::string res = detoken;
+    return res;
+}

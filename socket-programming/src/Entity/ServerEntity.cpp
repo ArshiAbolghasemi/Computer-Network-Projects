@@ -122,13 +122,13 @@ void ServerEntity::manageClient(int fd)
     {
         FMenuHandle(buffer, fd);
     }
-    else if(strncmp(buffer, (const char*)SIGNUP_PAT,
-        strlen(SIGNUP_PAT)) == 0)
-    {
-
-    }
     else if(strncmp(buffer, (const char*)SIGNIN_PAT,
         strlen(SIGNIN_PAT)) == 0)
+    {
+        SInHandle(buffer, fd);
+    }
+    else if(strncmp(buffer, (const char*)SIGNUP_PAT,
+        strlen(SIGNUP_PAT)) == 0)
     {
 
     }
@@ -140,7 +140,8 @@ void ServerEntity::manageClient(int fd)
 
 void ServerEntity::FMenuHandle(const char* buf, int fd)
 {
-    std::string data = deTokenize(FIRST_MENU_PAT, buf);
+    std::string data = StringService::deTokenize(
+        FIRST_MENU_PAT, buf);
     if(data == "1\n")
     {
         sendMsg(fd, (const char*)SIGNUP_PAT);
@@ -155,13 +156,48 @@ void ServerEntity::FMenuHandle(const char* buf, int fd)
     }
 }
 
-std::string ServerEntity::deTokenize(const char* token, 
-    const char* buf)
+void ServerEntity::SInHandle(const char* buf, int fd)
 {
-    char temp[MAX_BUFFER_LENGTH];
-    memset(temp, 0, MAX_BUFFER_LENGTH);
-    strcpy(temp, buf);
-    char* detoken = strtok(temp, token);
-    std::string res = detoken;
-    return res;   
+    std::string data = StringService::deTokenize(SIGNIN_PAT, buf);
+    data.pop_back(); // for \n in the end
+    UserEntity* cur_usr = ErrorChecker::signInCheck(data); 
+    if(cur_usr == nullptr)
+    {
+        sendStatus(INVALID_CRED, ERR_PAT, fd);
+        return;
+    }
+    else
+    {
+        for(auto usr : uVec)
+        {
+            if(cur_usr->usrAuth(usr->getName(), 
+                usr->getPassword()))
+            {
+                usr->setFileDescriptor(fd);
+                sendStatus(GOOD_SIGNIN, SUC_PAT, fd);
+                sleep(0.3);
+                sendStatus(0, MAIN_MENU, fd);
+                return;
+            }
+        }
+        perror("Undefined by user Auth");
+        return;
+    }
+}
+
+void ServerEntity::sendStatus(int stNum, 
+    std::string status, int fd)
+{
+    std::string s_buf;
+    if(stNum != 0)
+    {
+    s_buf = 
+    StringService::addStatus(std::to_string(stNum).c_str(),
+        status);
+    }
+    else
+    {
+        s_buf = status;
+    }
+    send(fd, s_buf.c_str(), s_buf.size(), 0);
 }
