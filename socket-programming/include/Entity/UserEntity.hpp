@@ -21,6 +21,9 @@ private:
     std::string address;
     
     bool isAdmin;
+
+    int file_d;
+    
 public:
     UserEntity(
         int _id,
@@ -61,6 +64,12 @@ public:
     bool hasAdminAccess();
 
     UserEntity* setAdminAccess(bool _isAdmin);
+
+    int getFileDescriptor();
+
+    void setFileDescriptor(int fd);
+
+    bool usrAuth(std::string usr, std::string pass);
 };
 
 #endif
