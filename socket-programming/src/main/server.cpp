@@ -1,4 +1,3 @@
-#include "../../include/service/ServerService.hpp"
 #include "../../include/Entity/ServerEntity.hpp"
 
 int main()

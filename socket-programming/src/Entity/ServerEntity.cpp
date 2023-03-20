@@ -26,7 +26,7 @@ void ServerEntity::setTime()
         // ErrorHandler::
     }
     this->serverDate = DateTime::toDate(
-        parseStringByDelim(line, '-')[1]);
+        StringService::parseStringByDelim(line, '-')[1]);
 }
 
 void ServerEntity::runServer(int serverFD)
@@ -37,7 +37,7 @@ void ServerEntity::runServer(int serverFD)
     int max_ind = serverFD;
     while(1)
     {
-        temp = master;
+        temp = this->master;
         selectSysCall(max_ind+1, &temp);
         for(int i = 0; i <= max_ind; i++)
         {
@@ -46,7 +46,7 @@ void ServerEntity::runServer(int serverFD)
                 if(i == serverFD)
                 {
                     int cli_fd = newClientHandle(
-                        &master, serverFD);
+                        &(this->master), serverFD);
                     if(cli_fd > max_ind)
                     {
                         max_ind = cli_fd;
@@ -86,6 +86,7 @@ std::vector<UserEntity*> ServerEntity::initClientsFromJson()
         return res;
     }
     perror("file not open");
+    return res;
 }
 
 std::vector<HotelRoomEntity*> ServerEntity::initHotelRoomsFromJson()
@@ -105,6 +106,7 @@ std::vector<HotelRoomEntity*> ServerEntity::initHotelRoomsFromJson()
         return res;
     }
     perror("file not open");
+    return res;
 }
 
 void ServerEntity::manageClient(int fd)

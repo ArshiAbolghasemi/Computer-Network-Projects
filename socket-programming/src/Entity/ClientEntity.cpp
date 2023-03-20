@@ -1,29 +1,26 @@
-#include "../../include/service/ClientService.hpp"
-extern "C"{
-    #include "../../include/service/SocketService.h"   
-}
+#include "../../include/Entity/ClientEntity.hpp"
 
-
-int serverConnect(int port, const char* host)
+int ClientEntity::serverConnect(int port,
+    const char* host)
 {
     int cli_fd = createSocket(AF_INET, SOCK_STREAM, 0);
     struct sockaddr_in cli = createSocketAddressIn(
-        SERVER_PORT, SERVER_ADDRESS);
+        port, host);
     setSocketOption(cli_fd, SOL_SOCKET, SO_REUSEADDR);
     setSocketOption(cli_fd, SOL_SOCKET, SO_REUSEPORT);
     connectToSocket(cli_fd, cli);
-    return cli_fd;
+    return cli_fd; 
 }
 
-void runClient(int cli_fd)
+void ClientEntity::runClient(int cli_fd)
 {
-    fd_set master, temp;
-    FD_ZERO(&master);
-    FD_SET(0, &master);
-    FD_SET(cli_fd, &master);
+    fd_set temp;
+    FD_ZERO(&(this->master));
+    FD_SET(0, &(this->master));
+    FD_SET(cli_fd, &(this->master));
     while(1)
     {
-        temp = master;
+        temp = this->master;
         selectSysCall(cli_fd+1, &temp);
         if(FD_ISSET(0, &temp))
         {
@@ -33,5 +30,5 @@ void runClient(int cli_fd)
         {
             // clientSendHandle(); // Send Msg logic
         }
-    }
+    }    
 }

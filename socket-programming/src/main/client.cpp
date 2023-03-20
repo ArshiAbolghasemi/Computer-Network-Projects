@@ -1,8 +1,9 @@
-#include "../../include/service/ClientService.hpp"
+#include "../../include/Entity/ClientEntity.hpp"
 
 int main()
 {
-    int cli_fd = serverConnect(SERVER_PORT, 
-        SERVER_ADDRESS);
-    runClient(cli_fd);
+   ClientEntity client;
+   int cli_fd = client.serverConnect(SERVER_PORT,
+    SERVER_ADDRESS);
+   client.runClient(cli_fd); 
 }

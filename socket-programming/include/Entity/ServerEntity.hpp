@@ -1,18 +1,22 @@
+#ifndef _SERVER_ENTITY_HPP_
+#define _SERVER_ENTITY_HPP_
+
 extern "C"{
     #include "../service/SocketService.h"
 }
 
 #include <iostream>
 #include <fstream>
+
 #include "../lib/DateTime.hpp"
 #include "../service/ErrorCheckerService.hpp"
 #include "UserEntity.hpp"
 #include "HotelRoomEntity.hpp"
+#include "../service/StringService.hpp"
 
 const char* SERVER_ADDRESS = "127.0.0.1";
 const int SERVER_PORT  = 11000;
 const char* WELCOME = "Welcome...!\n1)To sign up\n2)To sign in\n";
-const char* SERVER_ADDRESS = "127.0.0.1";
 const char* COMMAND = "Command -> ";
 const char* HELP = "Help -> ";
 const char* SET_TIME = "setTime <Date Time>\n";
@@ -31,6 +35,10 @@ class ServerEntity
 
         void manageClient(int fd);
 
+        std::vector<UserEntity*> uVec;
+        
+        std::vector<HotelRoomEntity*> hVec;
+
     public:
         int setupServer(const char* add, int port);
         
@@ -40,9 +48,10 @@ class ServerEntity
 
         ServerEntity(){}
 
-        
-std::vector<UserEntity*>initClientsFromJson();
+        std::vector<UserEntity*>initClientsFromJson();
 
-std::vector<HotelRoomEntity*> ServerEntity::initHotelRoomsFromJson();
+        std::vector<HotelRoomEntity*> initHotelRoomsFromJson();
 
 };
+
+#endif

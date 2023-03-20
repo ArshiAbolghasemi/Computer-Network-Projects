@@ -1,7 +1,7 @@
 #include "../../include/service/StringService.hpp"
 
 
-std::vector<std::string> parseStringByDelim(
+std::vector<std::string>StringService::parseStringByDelim(
     std::string inp, char delim)
 {
     std::stringstream ss;
@@ -15,7 +15,7 @@ std::vector<std::string> parseStringByDelim(
     return res;
 }
 
-bool isStringAllFlag(std::string inp,
+bool StringService::isStringAllFlag(std::string inp,
     enum StrFormat flag)
 {
     if(flag == NUM)
@@ -38,4 +38,6 @@ bool isStringAllFlag(std::string inp,
             }
         }
     }
+    perror("Undefined use of the function isStringAllFlag");
+    return false;
 }
