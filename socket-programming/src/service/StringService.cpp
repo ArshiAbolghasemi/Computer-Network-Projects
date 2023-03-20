@@ -1,6 +1,5 @@
 #include "../../include/service/StringService.hpp"
 
-
 std::vector<std::string>StringService::parseStringByDelim(
     std::string inp, char delim)
 {
@@ -27,6 +26,7 @@ bool StringService::isStringAllFlag(std::string inp,
                 return false;
             }
         }
+        return true;
     }
     else if(flag == CHAR)
     {
@@ -37,7 +37,16 @@ bool StringService::isStringAllFlag(std::string inp,
                 return false;
             }
         }
+        return true;
     }
     perror("Undefined use of the function isStringAllFlag");
     return false;
+}
+
+std::string StringService::addStatus(const char* inp,
+    std::string status)
+{
+    std::string temp = inp;
+    std::string res = status + temp;
+    return res;
 }

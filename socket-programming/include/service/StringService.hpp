@@ -23,6 +23,9 @@ class StringService
 
         static bool isStringAllFlag(std::string inp,
             enum StrFormat flag);
+        
+        static std::string addStatus(const char* inp,
+            std::string status);
 };
 
 #endif

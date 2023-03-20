@@ -13,8 +13,8 @@ SP_PROJECT_SERVICE_DIR := $(SP_PROJECT_SOURCE_DIR)/service
 CC := gcc
 CPP := g++ 
 CPP_VERSION := -std=c++11
-CPPFLAGS := $(CPP_VERSION) -c -Wall -Wextra
-CCFLAGS := -c
+CPPFLAGS := $(CPP_VERSION) -c -g -Wall -Wextra
+CCFLAGS := -c -g
 
 #entity_test: EntityTest
 
@@ -50,7 +50,7 @@ EntityService.o: ./src/service/EntityService.cpp ./include/service/EntityService
 SPJsonService.o: ./src/service/SPJsonService.cpp ./include/service/SPJsonService.hpp
 	$(CPP) $(CPPFLAGS) -I ./include ./src/service/SPJsonService.cpp -o SPJsonService.o
 
-DateTime.o: ./src/lib/DateTime.cpp ./include/lib/DateTime.hpp
+DateTime.o: ./src/lib/DateTime.cpp ./include/lib/DateTime.hpp ./include/service/StringService.hpp
 	$(CPP) $(CPPFLAGS) -I ./include ./src/lib/DateTime.cpp -o DateTime.o
 
 LogService.o: ./src/service/LogService.c ./include/service/LogService.h

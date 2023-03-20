@@ -23,6 +23,7 @@ private:
     bool isAdmin;
 
     int file_d;
+    
 public:
     UserEntity(
         int _id,

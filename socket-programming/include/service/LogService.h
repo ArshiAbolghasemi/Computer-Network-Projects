@@ -14,7 +14,7 @@ extern "C"
 #define INFO_TYPE "INFO"
 #define WARNING_TYPE "WARNING"
 
-#define LOG_FILE_PATH "../log.txt" // accessible from all the source files to the one exact location
+#define LOG_FILE_PATH "log.txt" // accessible from all the source files to the one exact location
 
 static void logMsg(FILE* _stream, char* _type, char* _format, va_list _args);
 

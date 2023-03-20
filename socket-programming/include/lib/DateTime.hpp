@@ -6,6 +6,8 @@
 #include <vector>
 #include <iomanip>
 
+#include "../service/StringService.hpp"
+
 using namespace std;
 
 class DateTime

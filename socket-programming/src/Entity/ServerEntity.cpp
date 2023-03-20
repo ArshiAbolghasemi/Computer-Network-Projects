@@ -20,25 +20,28 @@ void ServerEntity::setTime()
     std::cout << HELP << SET_TIME_HELP;
     std::cout << INDICATOR;
     std::string line;
-    std::getline(std::cin, line, '\0');
+    std::getline(std::cin, line, '\n');
     if(ErrorChecker::setTimeCheck(line) == false)
     {
         // ErrorHandler::
+        perror("bad Time");
+        return;
     }
-    this->serverDate = DateTime::toDate(
-        StringService::parseStringByDelim(line, '-')[1]);
+    _serverDate = DateTime::toDate(
+        StringService::parseStringByDelim(line, ' ')[1]);
 }
 
 void ServerEntity::runServer(int serverFD)
 {
-    this->setTime();
+    setTime();
     fd_set temp;
-    FD_ZERO(&(this->master));
+    FD_ZERO(&_master);
+    FD_SET(serverFD, &_master);
     int max_ind = serverFD;
     while(1)
     {
-        temp = this->master;
-        selectSysCall(max_ind+1, &temp);
+        temp = _master;
+        select(max_ind+1, &temp, NULL, NULL, NULL);
         for(int i = 0; i <= max_ind; i++)
         {
             if(FD_ISSET(i, &temp))
@@ -46,7 +49,7 @@ void ServerEntity::runServer(int serverFD)
                 if(i == serverFD)
                 {
                     int cli_fd = newClientHandle(
-                        &(this->master), serverFD);
+                        serverFD);
                     if(cli_fd > max_ind)
                     {
                         max_ind = cli_fd;
@@ -61,11 +64,11 @@ void ServerEntity::runServer(int serverFD)
     }
 }
 
-int ServerEntity::newClientHandle(fd_set* fs, int serverFD)
+int ServerEntity::newClientHandle(int serverFD)
 {
     int client_fd = acceptClient(serverFD);
-    FD_SET(client_fd, fs);
-    sendMsg(client_fd, WELCOME);
+    FD_SET(client_fd, &_master);
+    sendMsg(client_fd, (const char*) FIRST_MENU_PAT);
     return client_fd;
 }
 
@@ -111,5 +114,54 @@ std::vector<HotelRoomEntity*> ServerEntity::initHotelRoomsFromJson()
 
 void ServerEntity::manageClient(int fd)
 {
+    char buffer[MAX_BUFFER_LENGTH];
+    memset(buffer, 0, MAX_BUFFER_LENGTH);
+    readSocket(fd, buffer);
+    if(strncmp(buffer, (const char*)FIRST_MENU_PAT,
+        strlen(FIRST_MENU_PAT)) == 0)
+    {
+        FMenuHandle(buffer, fd);
+    }
+    else if(strncmp(buffer, (const char*)SIGNUP_PAT,
+        strlen(SIGNUP_PAT)) == 0)
+    {
 
+    }
+    else if(strncmp(buffer, (const char*)SIGNIN_PAT,
+        strlen(SIGNIN_PAT)) == 0)
+    {
+
+    }
+    else
+    {
+
+    }
+}
+
+void ServerEntity::FMenuHandle(const char* buf, int fd)
+{
+    std::string data = deTokenize(FIRST_MENU_PAT, buf);
+    if(data == "1\n")
+    {
+        sendMsg(fd, (const char*)SIGNUP_PAT);
+    }
+    else if(data == "2\n")
+    {
+        sendMsg(fd, (const char*)SIGNIN_PAT);
+    }
+    else
+    {
+        sendMsg(fd, (const char*)ERR_PAT);
+    }
+}
+
+std::string ServerEntity::deTokenize(const char* token, 
+    const char* buf)
+{
+    char temp[MAX_BUFFER_LENGTH];
+    memset(temp, 0, MAX_BUFFER_LENGTH);
+    strcpy(temp, buf);
+    char* detoken = strtok(temp, token);
+    std::string res = detoken;
+    return res;   
 }

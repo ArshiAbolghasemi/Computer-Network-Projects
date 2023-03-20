@@ -105,7 +105,8 @@ void selectSysCall(int _nfds, fd_set * _readfds)
 
 void connectToSocket(int _fd, struct sockaddr_in srv_addr)
 {
-    if(connect(_fd, (struct  sockaddr *) &srv_addr, sizeof(srv_addr)) < 0){
+    if(connect(_fd, (const struct  sockaddr *) &srv_addr, 
+        (socklen_t) sizeof(srv_addr)) < 0){
         logErrorToConsole("failed to connect to socket, socket_fd: %d", _fd);
         logErrorToFile("failed to connect to socket, socket_fd: %d", _fd);
         exit(EXIT_FAILURE);
