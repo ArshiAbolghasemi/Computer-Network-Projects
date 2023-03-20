@@ -86,8 +86,3 @@ void ClientEntity::FMenuProtocol()
 {
     std::cout << WELCOME;
 }
-
-void ClientEntity::SignInProtocol()
-{
-    std::cout << 
-}
