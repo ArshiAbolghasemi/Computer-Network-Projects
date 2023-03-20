@@ -5,8 +5,8 @@ extern "C"{
     #include "../service/SocketService.h"
 }
 
-const char* SERVER_ADDRESS = "127.0.0.1";
-const int SERVER_PORT  = 11000;
+#define SERVER_ADDRESS "127.0.0.1"
+#define SERVER_PORT 11000
 
 class ClientEntity
 {

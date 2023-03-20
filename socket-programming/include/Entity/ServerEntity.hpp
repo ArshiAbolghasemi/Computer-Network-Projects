@@ -1,9 +1,8 @@
 #ifndef _SERVER_ENTITY_HPP_
 #define _SERVER_ENTITY_HPP_
 
-extern "C"{
-    #include "../service/SocketService.h"
-}
+
+#include "../service/SocketService.h"
 
 #include <iostream>
 #include <fstream>
@@ -14,14 +13,14 @@ extern "C"{
 #include "HotelRoomEntity.hpp"
 #include "../service/StringService.hpp"
 
-const char* SERVER_ADDRESS = "127.0.0.1";
-const int SERVER_PORT  = 11000;
-const char* WELCOME = "Welcome...!\n1)To sign up\n2)To sign in\n";
-const char* COMMAND = "Command -> ";
-const char* HELP = "Help -> ";
-const char* SET_TIME = "setTime <Date Time>\n";
-const char* SET_TIME_HELP = "Date time format: 25-02-2023\n";
-const char* INDICATOR = ">> ";
+#define SERVER_ADDRESS "127.0.0.1"
+#define SERVER_PORT 11000
+#define WELCOME "Welcome...!\n1)To sign up\n2)To sign in\n"
+#define COMMAND "Command -> "
+#define HELP "Help -> "
+#define SET_TIME "setTime <Date Time>\n"
+#define SET_TIME_HELP "Date time format: 25-02-2023\n"
+#define INDICATOR ">> "
 
 
 class ServerEntity

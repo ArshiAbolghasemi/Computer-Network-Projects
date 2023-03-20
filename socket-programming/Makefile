@@ -56,13 +56,13 @@ DateTime.o: ./src/lib/DateTime.cpp ./include/lib/DateTime.hpp
 LogService.o: ./src/service/LogService.c ./include/service/LogService.h
 	$(CC) $(CCFLAGS) -I ./include ./src/service/LogService.c -o LogService.o
 
-SocketService.o: ./src/service/SocketService.c ./include/service/SocketService.h ./include/service/LogService.h ./src/service/LogService.c
+SocketService.o: ./src/service/SocketService.c ./include/service/SocketService.h ./include/service/LogService.h
 	$(CC) $(CCFLAGS) -I ./include ./src/service/SocketService.c -o SocketService.o
 
-client.o: ./src/main/client.cpp ./src/Entity/ClientEntity.cpp ./include/Entity/ClientEntity.hpp ./src/service/SocketService.c ./include/service/SocketService.h ./include/service/LogService.h ./src/service/LogService.c
+client.o: ./src/main/client.cpp ./include/Entity/ClientEntity.hpp ./include/service/SocketService.h ./include/service/LogService.h
 	$(CPP) $(CPPFLAGS) -I ./include ./src/main/client.cpp -o client.o
 
-ClientEntity.o: ./src/Entity/ClientEntity.cpp ./include/Entity/ClientEntity.hpp ./src/service/SocketService.c ./include/service/SocketService.h ./include/service/LogService.h ./src/service/LogService.c
+ClientEntity.o: ./src/Entity/ClientEntity.cpp ./include/Entity/ClientEntity.hpp ./include/service/SocketService.h ./include/service/LogService.h
 	$(CPP) $(CPPFLAGS) -I ./include ./src/Entity/ClientEntity.cpp -o ClientEntity.o
 
 server.o: ./src/main/server.cpp ./include/Entity/ServerEntity.hpp ./include/service/SocketService.h ./include/service/LogService.h
@@ -78,4 +78,4 @@ ErrorCheckerService.o: $(SP_PROJECT_SERVICE_DIR)/ErrorCheckerService.cpp ./inclu
 	$(CPP) $(CPPFLAGS) -I ./include $(SP_PROJECT_SERVICE_DIR)/ErrorCheckerService.cpp -o ErrorCheckerService.o
 
 clean:
-	rm -rf *.o EntityTest.out
+	rm -rf *.o *.out *.txt $(LOG) EntityTest.out
